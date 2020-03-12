@@ -4,14 +4,14 @@
 
 /////////////////////
 // EDUCATION FORM
-/*
+// 
 // Adjust your form ID
 //add_filter( 'gform_form_post_get_meta_14', 'add_fields_from_education' );
 function add_fields_from_education( $form ) {
  
     $repeater = GF_Fields::create( array(
         'type'   => 'repeater',
-        'id'     => 1000,
+        'id'     => 6000,
         'formId' => $form['id'],
         'label'  => 'Educational Experience',
         'addButtonText' => 'Add Education',
@@ -21,11 +21,11 @@ function add_fields_from_education( $form ) {
  
     $another_form = GFAPI::get_form( 12 );
     foreach ( $another_form['fields'] as $field ) {
-        $field->id = $field->id + 1000;
+        $field->id = $field->id + 6000;
         $field->formId = $form['id'];
             if ( is_array( $field->inputs ) ) {
             foreach ( $field->inputs as &$input ) {
-                $input['id'] = (string) ( $input['id'] + 1000 );
+                $input['id'] = (string) ( $input['id'] + 6000 );
             }
         }  
     }
@@ -37,12 +37,12 @@ function add_fields_from_education( $form ) {
 }
 
 // Remove the field before the form is saved. Adjust your form ID
-//add_filter( 'gform_form_update_meta_14', 'remove_my_education_field', 10, 3 );
+add_filter( 'gform_form_update_meta_14', 'remove_my_education_field', 10, 3 );
 function remove_my_education_field( $form_meta, $form_id, $meta_name ) {
  
     if ( $meta_name == 'display_meta' ) {
         // Remove the Repeater field: ID 1000
-        $form_meta['fields'] = wp_list_filter( $form_meta['fields'], array( 'id' => 1000 ), 'NOT' );
+        $form_meta['fields'] = wp_list_filter( $form_meta['fields'], array( 'id' => 6000 ), 'NOT' );
     }
  
     return $form_meta;
@@ -50,12 +50,12 @@ function remove_my_education_field( $form_meta, $form_id, $meta_name ) {
 
 ///////////////
 // EMPLOYMENT FORM
-//add_filter( 'gform_form_post_get_meta_14', 'add_fields_from_employment' );
+add_filter( 'gform_form_post_get_meta_14', 'add_fields_from_employment' );
 function add_fields_from_employment( $form ) {
  
     $repeater = GF_Fields::create( array(
         'type'   => 'repeater',
-        'id'     => 2000,
+        'id'     => 5000,
         'formId' => $form['id'],
         'label'  => 'Employment Experience',
         'addButtonText' => 'Add Employment',
@@ -65,11 +65,11 @@ function add_fields_from_employment( $form ) {
  
     $another_form = GFAPI::get_form( 13 );
     foreach ( $another_form['fields'] as $field ) {
-        $field->id = $field->id + 2000;
+        $field->id = $field->id + 5000;
         $field->formId = $form['id'];
             if ( is_array( $field->inputs ) ) {
             foreach ( $field->inputs as &$input ) {
-                $input['id'] = (string) ( $input['id'] + 2000 );
+                $input['id'] = (string) ( $input['id'] + 5000 );
             }
         }  
     }
@@ -81,17 +81,17 @@ function add_fields_from_employment( $form ) {
 }
 
 // Remove the field before the form is saved. Adjust your form ID
-//add_filter( 'gform_form_update_meta_14', 'remove_my_employment_field', 10, 3 );
+add_filter( 'gform_form_update_meta_14', 'remove_my_employment_field', 10, 3 );
 function remove_my_employment_field( $form_meta, $form_id, $meta_name ) {
  
     if ( $meta_name == 'display_meta' ) {
-        // Remove the Repeater field: ID 1000
-        $form_meta['fields'] = wp_list_filter( $form_meta['fields'], array( 'id' => 2000 ), 'NOT' );
+        // Remove the Repeater field: ID 5000
+        $form_meta['fields'] = wp_list_filter( $form_meta['fields'], array( 'id' => 5000 ), 'NOT' );
     }
  
     return $form_meta;
 }
-*/
+
 
 // Adjust your form ID
 add_filter( 'gform_form_post_get_meta_14', 'add_education_field' );
