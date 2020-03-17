@@ -5,7 +5,10 @@
 // Adjust your form ID
 add_filter( 'gform_form_post_get_meta_14', 'add_fields_from_education' );
 function add_fields_from_education( $form ) {
- 
+// 	$added_form = 12;
+//  $oid = 1000;
+// 	$pageNum = 2;
+	
     $repeater = GF_Fields::create( array(
         'type'   => 'repeater',
         'id'     => 1000,
@@ -13,13 +16,14 @@ function add_fields_from_education( $form ) {
         'label'  => 'Educational Experience',
         'addButtonText' => 'Add Education',
         'removeButtonText' => 'Remove Education',
-        'pageNumber'  => 2
+        'pageNumber'  => 1
     ) );
  
     $another_form = GFAPI::get_form( 12 );
     foreach ( $another_form['fields'] as $field ) {
         $field->id = $field->id + 1000;
         $field->formId = $form['id'];
+		$field->pageNumber = 1;
             if ( is_array( $field->inputs ) ) {
             foreach ( $field->inputs as &$input ) {
                 $input['id'] = (string) ( $input['id'] + 1000 );
@@ -29,7 +33,7 @@ function add_fields_from_education( $form ) {
  
     $repeater->fields = $another_form['fields'];
     //$form['fields'][] = $repeater;
-	array_splice( $form['fields'], 23, 0, array( $repeater ) );
+	array_splice( $form['fields'], 22, 0, array( $repeater ) );
  
     return $form;
 }
@@ -50,7 +54,10 @@ function remove_my_education_field( $form_meta, $form_id, $meta_name ) {
 // EMPLOYMENT FORM
 add_filter( 'gform_form_post_get_meta_14', 'add_fields_from_employment' );
 function add_fields_from_employment( $form ) {
- 
+//  $added_form = 16;
+//  $oid = 2000;
+// 	$pageNum = 3;
+	
     $repeater = GF_Fields::create( array(
         'type'   => 'repeater',
         'id'     => 2000,
@@ -58,13 +65,14 @@ function add_fields_from_employment( $form ) {
         'label'  => 'Employment Experience',
         'addButtonText' => 'Add Employment',
         'removeButtonText' => 'Remove Employment',
-        'pageNumber'  => 3
+        'pageNumber'  => 1
     ) );
  
     $another_form = GFAPI::get_form( 16 );
     foreach ( $another_form['fields'] as $field ) {
         $field->id = $field->id + 2000;
         $field->formId = $form['id'];
+		$field->pageNumber = 1;
             if ( is_array( $field->inputs ) ) {
             foreach ( $field->inputs as &$input ) {
                 $input['id'] = (string) ( $input['id'] + 2000 );
@@ -74,7 +82,7 @@ function add_fields_from_employment( $form ) {
  
     $repeater->fields = $another_form['fields'];
     //$form['fields'][] = $repeater;
-	array_splice( $form['fields'], 26, 0, array( $repeater ) );
+	array_splice( $form['fields'], 24, 0, array( $repeater ) );
  
     return $form;
 }
